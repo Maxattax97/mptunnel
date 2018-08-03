@@ -60,7 +60,7 @@ mpclient mpclient.conf
 Below is the content of mpclient.conf 
 
 ```
-1.1.1.1 4000
+1.2.3.4 4000
 bridge1.myhost.com 4000
 bridge2.myhost.com 4000
 ```
@@ -70,14 +70,14 @@ bridge2.myhost.com 4000
 On each bridge server, use _socat_ to forward packet:
 
 ```
-socat udp-listen:4000 udp4:1.1.1.1:2000
+socat udp-listen:4000 udp4:1.2.3.4:2000
 ```
 
-Bridge server will listen on UDP port 3001, forward any recieved packet to 1.1.1.1:2000, and vice versa.
+Bridge server will listen on UDP port 4000, forward any recieved packet to 1.2.3.4:2000, and vice versa.
 
 
-Now I make OpenVPN client to connect localhost:3000 which mpclient listening on, then OpenVPN will
-establish an OpenVPN connection over MultiPath UDP tunnel.
+Now I make OpenVPN client to connect localhost:3210 which mpclient is listening on by default (configuration option planned),
+then OpenVPN will establish an OpenVPN connection over MultiPath UDP tunnel.
 
 
 ## BUGS
