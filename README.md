@@ -1,4 +1,5 @@
 # mptunnel
+
 MultiPath Tunnel (Simpified user space MPUDP)
 
 [中文说明点此](README.zh_CN.md)
@@ -10,7 +11,6 @@ several connections from local to remote server.
 
 MPTCP(MultiPath TCP) is a good idea to make network connection robust, but it only works on TCP. I was
 searching for MPUDP implementation but got nothing, so I write this tool.
-
 
 ## CONCEPTION
 
@@ -37,7 +37,6 @@ information of Server B. Once mpserver is started, it will forward any packet to
 Bridge servers is simple, it only forward packets from mpclient to mpserver, or packets from mpserver to
 mpclient. You can use _nc_ or _socat_ to deploy a bridge server.
 
-
 ## EXAMPLE
 
 I want to connection to my OpenVPN server, but the connection is unstable, packet loss ratio is high. The
@@ -57,7 +56,7 @@ On local, run mpclient:
 mpclient mpclient.conf
 ```
 
-Below is the content of mpclient.conf 
+Below is the content of mpclient.conf
 
 ```
 1.2.3.4 4000
@@ -75,24 +74,22 @@ socat udp-listen:4000 udp4:1.2.3.4:2000
 
 Bridge server will listen on UDP port 4000, forward any recieved packet to 1.2.3.4:2000, and vice versa.
 
-
 Now I make OpenVPN client to connect localhost:3210 which mpclient is listening on by default (configuration option planned),
 then OpenVPN will establish an OpenVPN connection over MultiPath UDP tunnel.
 
-
 ## BUGS
 
-* mptunnel add some control information into packets, including synchronous information. mpserver and mpclient must be start at the same time. If mpclient or mpserver terminated, you have to restart both mpserver and mpclient to reestablish the tunnel.
+- mptunnel add some control information into packets, including synchronous information. mpserver and mpclient must be start at the same time. If mpclient or mpserver terminated, you have to restart both mpserver and mpclient to reestablish the tunnel.
 
-* Currently you can only specify signle target host. Any one knows is there any C library of SOCKS5 proxy? I think making mpclient as a SOCKS proxy server will make it more easy to use.
+- Currently you can only specify signle target host. Any one knows is there any C library of SOCKS5 proxy? I think making mpclient as a SOCKS proxy server will make it more easy to use.
 
-* mptunnel encrypt packets defaultly, but it will decrease the throughput. I do some tests on my PC with Athlon II P320 Processor, the actual throughput is 3Mbps while using three tunnels, after I disable encryption the throughput increase to 300Mbps. If you dont't like mptunnel to encrypt packets, set environment variable MPTUNNEL_ENCRYPT=0
+- mptunnel encrypt packets defaultly, but it will decrease the throughput. I do some tests on my PC with Athlon II P320 Processor, the actual throughput is 3Mbps while using three tunnels, after I disable encryption the throughput increase to 300Mbps. If you dont't like mptunnel to encrypt packets, set environment variable MPTUNNEL_ENCRYPT=0
 
 ## DEPENDENCIES
 
 To compile mptunnel, these libraries are required:
 
-* libev
+- libev
 
 ## SEE ALSO
 
