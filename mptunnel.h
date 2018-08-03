@@ -34,12 +34,37 @@
 #define LOG_LDEBUG 5
 #define LOG_DEBUG 6
 
+#define LOG_LEVEL 4
 
+#if LOG_LEVEL >= LOG_DEBUG
 #define LOGD(FMT, ...) LOG(LOG_DEBUG, FMT, ##__VA_ARGS__)
-#define LOGW(FMT, ...) LOG(LOG_WARNING, FMT, ##__VA_ARGS__)
-#define LOGE(FMT, ...) LOG(LOG_ERROR, FMT, ##__VA_ARGS__)
-#define LOGN(FMT, ...) LOG(LOG_NOTICE, FMT, ##__VA_ARGS__)
+#else
+#define LOGD(FMT, ...)
+#endif
+
+#if LOG_LEVEL >= LOG_INFO
 #define LOGI(FMT, ...) LOG(LOG_INFO, FMT, ##__VA_ARGS__)
+#else
+#define LOGI(FMT, ...)
+#endif
+
+#if LOG_LEVEL >= LOG_NOTICE
+#define LOGN(FMT, ...) LOG(LOG_NOTICE, FMT, ##__VA_ARGS__)
+#else
+#define LOGN(FMT, ...)
+#endif
+
+#if LOG_LEVEL >= LOG_WARNING
+#define LOGW(FMT, ...) LOG(LOG_WARNING, FMT, ##__VA_ARGS__)
+#else
+#define LOGW(FMT, ...)
+#endif
+
+#if LOG_LEVEL >= LOG_ERROR
+#define LOGE(FMT, ...) LOG(LOG_ERROR, FMT, ##__VA_ARGS__)
+#else
+#define LOGE(FMT, ...)
+#endif
 
 #define LOG(level, FMT, ...) do {    \
     static struct tm *tmp = NULL; static time_t t1, t2 = (time_t)NULL; struct timeval tv; char timestr[128] = {0}; char ms[4] = {0};  \
@@ -75,7 +100,7 @@ typedef struct received_list_t {
     long ctime;
     int id;
 } received_list_t;
-    
+
 
 typedef struct received_t {
     int min_con_id;     /// Continuously received the smallest number
@@ -102,7 +127,7 @@ typedef struct connections_t {
 packet_t* packet_make(enum packet_type type, const char* buf, int buflen, int);
 int packet_free(packet_t* p);
 int packet_send(int fd, char* buf, int buflen, int);
-    
+
 //int packet_received(int id);
 //int packet_is_received(int _id);
 

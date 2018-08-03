@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-19 21:07+0800\n"
+"POT-Creation-Date: 2018-08-03 11:36-0400\n"
 "PO-Revision-Date: 2016-04-19 21:02+0800\n"
 "Last-Translator: greensea <gs@bbxy.net>\n"
 "Language-Team: \n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Starting libev thread\n"
 msgstr "初始化 EV 线程\n"
 
-#: client.c:59 server.c:209
+#: client.c:59 server.c:207
 msgid "libev thread exited\n"
 msgstr "EV 线程退出了\n"
 
@@ -31,21 +31,21 @@ msgstr "EV 线程退出了\n"
 msgid "Usage: <%s> <config_file>\n"
 msgstr "用法: <%s> <配置文件路径>\n"
 
-#: client.c:72 server.c:361
+#: client.c:72 server.c:359
 #, c-format
 msgid "To disable encryption, set environment variable MPTUNNEL_ENCRYPT=0\n"
 msgstr "如果不想使用加密功能，请设定环境变量 MPTUNNEL_ENCRYPT=0\n"
 
-#: client.c:88 server.c:390
+#: client.c:88 server.c:388
 #, c-format
 msgid "Configuration: Encryption %s\n"
 msgstr "配置选项：加密%s\n"
 
-#: client.c:88 server.c:390
+#: client.c:88 server.c:388
 msgid "enabled"
 msgstr "启用"
 
-#: client.c:88 server.c:390
+#: client.c:88 server.c:388
 msgid "disabled"
 msgstr "禁用"
 
@@ -177,7 +177,7 @@ msgstr "从配置文件中读取到了远程服务器地址 %s:%d\n"
 msgid "Reconnected to %s:%d, fd %d -> %d"
 msgstr "重新连接到 %s:%d, fd 由 %d 更改为 %d"
 
-#: client.c:441 server.c:397
+#: client.c:441 server.c:395
 msgid "Initializing libev thread\n"
 msgstr "初始化 EV 线程\n"
 
@@ -248,12 +248,12 @@ msgstr "无法向 %d 发送 %lu 字节数据: %s\n"
 msgid "Sent %d bytes to %d, message id is %d\n"
 msgstr "向 %2$d 发送了 %1$d 字节数据，消息编号 %3$d\n"
 
-#: mptunnel.c:150
+#: mptunnel.c:151
 #, c-format
 msgid "Pakcet #%d is not exists in Received Packet List\n"
 msgstr "“已收到包列表中”不存在编号为 %d 的数据包\n"
 
-#: mptunnel.c:254
+#: mptunnel.c:255
 #, c-format
 msgid ""
 "Cleanup timed out packets, TTL=%d, last cleanup time is %ld, current time is "
@@ -262,7 +262,7 @@ msgstr ""
 "开始丢包清理，TTL=%d，最后清理时间 %ld, 当前时间 %ld, 距离上次清理已过去 %ld "
 "秒\n"
 
-#: mptunnel.c:279
+#: mptunnel.c:280
 #, c-format
 msgid ""
 "Packet #%d was received and time elapsed %ld seconds, assume packets which "
@@ -272,14 +272,14 @@ msgstr ""
 "数据包“%d”收到的时间已经过去了 %ld 秒，认为之前所有的数据包都已经收到了，当前"
 "最小已收到连续包 id 是 %d\n"
 
-#: mptunnel.c:299
+#: mptunnel.c:300
 #, c-format
 msgid ""
 "Finish cleanup timed out packets, TTL = %d, smallest continuous received "
 "packet ID is %d\n"
 msgstr "丢包清理操作完成，TTL=%d，最小连续收到的包编号为 %d\n"
 
-#: mptunnel.c:324
+#: mptunnel.c:325
 #, c-format
 msgid "Packet #%d is already exists in Packet Received List\n"
 msgstr "“已收到包列表”中已经存在编号为 %d 的数据包了\n"
@@ -348,16 +348,16 @@ msgstr "无法向目标服务器发送编号为 %d 的数据包：%s\n"
 msgid "Connection to target server seems closed, can't forward packet #%d\n"
 msgstr "目标服务器可能已经断开了连接，无法转发 %d 号数据包\n"
 
-#: server.c:193
+#: server.c:191
 msgid "libev thread started\n"
 msgstr "EV 线程开始执行\n"
 
-#: server.c:197
+#: server.c:195
 #, c-format
 msgid "Can't listen port %d: %s\n"
 msgstr "无法在 %d 端口上进行监听: %s\n"
 
-#: server.c:229
+#: server.c:227
 #, c-format
 msgid ""
 "Packet is %d bytes, which excees max packet size limit (%d bytes), spilt the "
@@ -366,14 +366,14 @@ msgstr ""
 "要发送的数据大小为 %d 字节，超过最大包大小(%d 字节)，将该包拆分为两个小包后再"
 "尝试发送\n"
 
-#: server.c:259
+#: server.c:257
 #, c-format
 msgid ""
 "No packet received from bridge (%s:%u) for %d seconds, assume the connection "
 "is closed, stop forward packet to it %d\n"
 msgstr "桥（%s:%u）空闲了 %d 秒，认为此桥已经断开，不向其转发数据包 %d\n"
 
-#: server.c:267
+#: server.c:265
 #, c-format
 msgid ""
 "The time difference between packet received and packet sent of bridge %s:%u "
@@ -383,49 +383,49 @@ msgstr ""
 "桥（%s:%u）最后发包与收包时间之差超过了 %d 秒（实际：%d），认为此桥已经断开，"
 "不向其转发数据包 %d\n"
 
-#: server.c:280
+#: server.c:278
 #, c-format
 msgid "Can't send packet to bridge(%s:%d) of %d bytes, packet ID is %d: %s\n"
 msgstr "无法向桥(%s:%d)发送 %d 字节数据，包编号 %d: %s\n"
 
-#: server.c:287
+#: server.c:285
 #, c-format
 msgid "Forward packet to bridge(port %u) of %d bytes, packet ID is %d\n"
 msgstr "向桥（端口：%u）发送了 %d 字节数据，包编号 %d\n"
 
-#: server.c:306
+#: server.c:304
 msgid "Thread which forward packet from server to bridge is started\n"
 msgstr "服务器到桥转发线程开始执行\n"
 
-#: server.c:314
+#: server.c:312
 #, c-format
 msgid "Could not connect to target server：%s\n"
 msgstr "无法连接到目标服务器: %s\n"
 
-#: server.c:326
+#: server.c:324
 #, c-format
 msgid "Target server close the connection: %s\n"
 msgstr "目标服务器关闭了连接: %s\n"
 
-#: server.c:332
+#: server.c:330
 msgid "Can't received packet from server, server close the connection\n"
 msgstr "无法从服务器收取数据，服务器关闭了连接\n"
 
-#: server.c:344
+#: server.c:342
 msgid "Thread which forward packet from server to bridge exited\n"
 msgstr "服务器到桥转发线程退出了\n"
 
-#: server.c:360
+#: server.c:358
 #, c-format
 msgid "Usage: <%s> <listen_port> <target_ip> <target_port>\n"
 msgstr "用法: <%s> <监听端口> <目标 IP> <目标端口>\n"
 
-#: server.c:391
+#: server.c:389
 #, c-format
 msgid "Configuration: Local listening port: %d\n"
 msgstr "配置项：本地监听端口：%d\n"
 
-#: server.c:392
+#: server.c:390
 #, c-format
 msgid "Configuration: server：%s:%d\n"
 msgstr "配置项：目标服务器：%s:%d\n"
